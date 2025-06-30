@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Reembolso - MVC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="titulo-principal">RELATÓRIO DE DESPESAS</h2>
+    <form id="cabecalhoForm">
+        <label for="colaborador">Colaborador:</label>
+        <input type="text" id="colaborador" required maxlength="100">
+        <label for="empresa">Empresa:</label>
+        <input type="text" id="empresa" required maxlength="100">
+        <label for="periodoInicial">Período Inicial:</label>
+        <input type="date" id="periodoInicial" required>
+        <label for="periodoFinal">Período Final:</label>
+        <input type="date" id="periodoFinal" required>
+        <button type="button" id="confirmarCabecalho">Confirmar Cabeçalho</button>
+    </form>
+    <div id="cabecalhoInfo" class="cabecalho-relatorio" style="display:none; margin-bottom: 20px;"></div>
+    <form id="reembolsoForm" style="display:none;">
+        <label for="tipo">Tipo de Reembolso:</label>
+        <select id="tipo" required>
+            <option value="">Selecione</option>
+            <option value="km">Km Rodado</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="outros">Outras Despesas</option>
+        </select>
+        <div id="campoKm" style="display:none;">
+            <label for="km">Km Rodado:</label>
+            <input type="number" id="km" min="0" step="0.01">
+        </div>
+        <div id="campoValor" style="display:none;">
+            <label for="valor">Valor (R$):</label>
+            <input type="number" id="valor" min="0" step="0.01">
+        </div>
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" maxlength="100">
+        <label for="dataDespesa">Data da Despesa:</label>
+        <input type="date" id="dataDespesa" required>
+        <button type="submit">Adicionar Reembolso</button>
+    </form>
+    <h3 class="titulo-secundario">Reembolsos</h3>
+    <table id="tabelaReembolsos">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Valor (R$)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linhas de reembolso aqui -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3">TOTAL</th>
+                <th id="totalReembolso">0.00</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+    <h3 class="titulo-secundario">Observações Gerais</h3>
+    <textarea id="observacoesGerais" rows="4" style="width:100%; margin-bottom:20px;"></textarea>
+    <div class="assinaturas print-only">
+        <div>
+            <p>Colaborador:</p>
+            <div class="linha-assinatura"></div>
+        </div>
+        <div>
+            <p>Gestor:</p>
+            <div class="linha-assinatura"></div>
+        </div>
+    </div>
+    <button id="btnImprimir" type="button">Imprimir</button>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
